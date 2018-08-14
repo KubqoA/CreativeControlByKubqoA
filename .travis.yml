@@ -8,4 +8,6 @@ deploy:
   file: target/CreativeControlByKubqoA-3.0-jar-with-dependencies.jar
   skip_cleanup: true
   on:
+    tags: true
+    branch: master
     repo: KubqoA/CreativeControlByKubqoA
