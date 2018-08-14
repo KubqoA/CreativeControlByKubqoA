@@ -1,3 +1,10 @@
 language: java
 script:
-  - mvn package
+- mvn package
+deploy:
+  provider: releases
+  api_key:
+    secure: Mk+vYCBdxUpnTbZpTKY535+ABvsiieyHE5b5Wisy7rb1f0KX9AfXb2p4KmDR2l1mFhrqyLO52CM2r6fkpj/gBuq/SeEa7uOsixkroA/rp5NYX5nIlz9N6HQCma3rJ61/cVoFoPP4KCuH4O90lWwkVuktKGzKeS9Og4ClAMj3BnePieX8KQQ+MIcqHiGfRy1TTGGtWjViFle5X+XRCRBEtqg96K/QJ45aVSo4T98ogHrbdAArabNxvFV64sUhKq88RGyU8eO9MsKeq+/lM/M+GVAbMnHj4eQ6vuDIgWCEfFK/yg4a/aRhuxB6Atd6zvAlPSqBAnjkpHpZC8aBIT6WMCkHm4xyBwpbmua4UcuG8J3becy2yJtSx5X+Kr181xvBIs8uZoHPwZkEoOSdvK2M8X2jWCUITJ9lxlbsKAXrjdzLZjPQHPqAH95KYjb7l02c+t+GDNVnj3O52w25d6IUobj4Cf8Xo2F3WcUIzqhSfhpFXD+TosSVUzh68MZTvdVmLBKQ9USiwc+aDnjXh61V0SSAS6jhgnZf8zB2N/0yAMjaIjJ8BSVPLQ9HISk/KdavIZ7yYA7iqKsvMt/o/28I18JH5vCMfceNbG3SBTX/1F37jiSMaZZuY5+53v3GCt0kblh9YaP1vAqK1nE/4JxeeZi4c4AleO5N3asSwjMeRPc=
+  file: target/CreativeControlByKubqoA-3.0-jar-with-dependencies.jar
+  on:
+    repo: KubqoA/CreativeControlByKubqoA
