@@ -18,6 +18,7 @@ public class CreativeControlByKubqoA extends JavaPlugin {
         config.create();
         config.load();
         database.initializeDatabasePool();
+        database.database.createBlocksTable();
         this.getLogger().info("Table blocks exists: " + database.database.tableExists("blocks"));
     }
 

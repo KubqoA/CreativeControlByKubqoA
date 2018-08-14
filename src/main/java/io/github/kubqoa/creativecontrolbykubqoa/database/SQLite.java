@@ -4,6 +4,7 @@ import com.zaxxer.hikari.HikariConfig;
 import io.github.kubqoa.creativecontrolbykubqoa.Config;
 import io.github.kubqoa.creativecontrolbykubqoa.CreativeControlByKubqoA;
 import io.github.kubqoa.creativecontrolbykubqoa.database.sqlite.BlockStoreUpdate;
+import io.github.kubqoa.creativecontrolbykubqoa.database.sqlite.BlockTableCreateUpdate;
 import io.github.kubqoa.creativecontrolbykubqoa.database.sqlite.TableExistsQuery;
 import org.bukkit.Bukkit;
 import org.bukkit.block.Block;
@@ -39,7 +40,12 @@ public class SQLite implements DatabaseInterface {
     }
 
     public void createBlocksTable() {
-
+        CreativeControlByKubqoA.javaPlugin.getLogger().info("createBlocksTable");
+        try {
+            new BlockTableCreateUpdate().run();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void blockStore(Block block) {

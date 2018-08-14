@@ -1,5 +1,6 @@
 package io.github.kubqoa.creativecontrolbykubqoa.database.sqlite;
 
+import io.github.kubqoa.creativecontrolbykubqoa.CreativeControlByKubqoA;
 import io.github.kubqoa.creativecontrolbykubqoa.database.Query;
 import io.github.kubqoa.creativecontrolbykubqoa.exceptions.TableExistsException;
 
@@ -12,7 +13,7 @@ public class TableExistsQuery extends Query {
     private String table;
 
     public TableExistsQuery(String table) {
-        this.table = table;
+        this.table = CreativeControlByKubqoA.config.getString("db.prefix") + table;
     }
 
     public String query() {
