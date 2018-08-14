@@ -43,7 +43,11 @@ public class SQLite implements DatabaseInterface {
     }
 
     public void blockStore(Block block) {
-
+        Bukkit.getScheduler().runTaskAsynchronously(CreativeControlByKubqoA.javaPlugin, new BukkitRunnable() {
+            public void run() {
+                new BlockStoreUpdate(block);
+            }
+        });
     }
 
     public boolean blockCheck(Block block) {
