@@ -21,10 +21,6 @@ public class MariaDB implements DatabaseInterface {
         return hikariConfig;
     }
 
-    public boolean tableExists(String table) {
-        return false;
-    }
-
     public void createBlocksTable() {
 
     }

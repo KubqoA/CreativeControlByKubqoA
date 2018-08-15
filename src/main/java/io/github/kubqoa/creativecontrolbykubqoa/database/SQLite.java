@@ -5,7 +5,6 @@ import io.github.kubqoa.creativecontrolbykubqoa.Config;
 import io.github.kubqoa.creativecontrolbykubqoa.CreativeControlByKubqoA;
 import io.github.kubqoa.creativecontrolbykubqoa.database.sqlite.BlockStoreUpdate;
 import io.github.kubqoa.creativecontrolbykubqoa.database.sqlite.BlockTableCreateUpdate;
-import io.github.kubqoa.creativecontrolbykubqoa.database.sqlite.TableExistsQuery;
 import org.bukkit.Bukkit;
 import org.bukkit.block.Block;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -28,19 +27,7 @@ public class SQLite implements DatabaseInterface {
         return hikariConfig;
     }
 
-    public boolean tableExists(String table) {
-        TableExistsQuery tableExistsQuery = new TableExistsQuery(table);
-        try {
-            tableExistsQuery.run();
-            return tableExistsQuery.hasResults();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
-
     public void createBlocksTable() {
-        CreativeControlByKubqoA.javaPlugin.getLogger().info("createBlocksTable");
         try {
             new BlockTableCreateUpdate().run();
         } catch (Exception e) {
@@ -51,7 +38,11 @@ public class SQLite implements DatabaseInterface {
     public void blockStore(Block block) {
         Bukkit.getScheduler().runTaskAsynchronously(CreativeControlByKubqoA.javaPlugin, new BukkitRunnable() {
             public void run() {
-                new BlockStoreUpdate(block);
+                try {
+                    new BlockStoreUpdate(block).run();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
     }

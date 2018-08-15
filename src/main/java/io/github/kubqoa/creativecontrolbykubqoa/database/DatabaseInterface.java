@@ -14,16 +14,14 @@ public interface DatabaseInterface {
     HikariConfig getHikariConfig(Config config);
 
     /**
-     * Checks whether table with the given name exists
-     *
-     * @param table the name of the table to be checked
-     * @return boolean
-     */
-    boolean tableExists(String table);
-
-    /**
      * Creates a new block table in the given database type
      * Table structure:
+     * id       - int
+     * chunk    - text(28)
+     * x        - real
+     * y        - real
+     * z        - real
+     * world    - text(uuid)
      */
     void createBlocksTable();
 

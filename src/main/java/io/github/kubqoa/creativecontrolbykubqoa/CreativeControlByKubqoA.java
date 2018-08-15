@@ -1,5 +1,7 @@
 package io.github.kubqoa.creativecontrolbykubqoa;
 
+import io.github.kubqoa.creativecontrolbykubqoa.listeners.BlockPlace;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class CreativeControlByKubqoA extends JavaPlugin {
@@ -19,11 +21,15 @@ public class CreativeControlByKubqoA extends JavaPlugin {
         config.load();
         database.initializeDatabasePool();
         database.database.createBlocksTable();
-        this.getLogger().info("Table blocks exists: " + database.database.tableExists("blocks"));
+        this.registerListeners(getServer().getPluginManager());
     }
 
     @Override
     public void onDisable() {
         database.closeDatabasePool();
+    }
+
+    private void registerListeners(PluginManager pluginManager) {
+        pluginManager.registerEvents(new BlockPlace(), this);
     }
 }
