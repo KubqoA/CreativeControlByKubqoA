@@ -8,7 +8,7 @@ public class BlockTableCreateUpdate extends Update {
     @Override
     public String update() {
         return "CREATE TABLE IF NOT EXISTS " +
-                CreativeControlByKubqoA.config.getString("db.prefix") + "blocks " +
+                CreativeControlByKubqoA.database.getTableName("blocks") +
                 "(" +
                 "`id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " +
                 "`chunk` TEXT, " +

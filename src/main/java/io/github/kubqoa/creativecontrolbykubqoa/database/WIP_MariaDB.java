@@ -2,9 +2,8 @@ package io.github.kubqoa.creativecontrolbykubqoa.database;
 
 import com.zaxxer.hikari.HikariConfig;
 import io.github.kubqoa.creativecontrolbykubqoa.Config;
-import org.bukkit.block.Block;
 
-public class MariaDB implements DatabaseInterface {
+abstract public class WIP_MariaDB implements DatabaseInterface {
     public HikariConfig getHikariConfig(Config config) {
         HikariConfig hikariConfig = new HikariConfig();
 
@@ -19,21 +18,5 @@ public class MariaDB implements DatabaseInterface {
         hikariConfig.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
 
         return hikariConfig;
-    }
-
-    public void createBlocksTable() {
-
-    }
-
-    public void blockStore(Block block) {
-
-    }
-
-    public boolean blockCheck(Block block) {
-        return false;
-    }
-
-    public void blockRemove(Block block) {
-
     }
 }

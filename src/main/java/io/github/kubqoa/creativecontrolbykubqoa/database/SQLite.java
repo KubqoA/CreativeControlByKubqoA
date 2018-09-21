@@ -3,11 +3,15 @@ package io.github.kubqoa.creativecontrolbykubqoa.database;
 import com.zaxxer.hikari.HikariConfig;
 import io.github.kubqoa.creativecontrolbykubqoa.Config;
 import io.github.kubqoa.creativecontrolbykubqoa.CreativeControlByKubqoA;
+import io.github.kubqoa.creativecontrolbykubqoa.creative.CreativeChunk;
 import io.github.kubqoa.creativecontrolbykubqoa.database.sqlite.BlockStoreUpdate;
 import io.github.kubqoa.creativecontrolbykubqoa.database.sqlite.BlockTableCreateUpdate;
+import io.github.kubqoa.creativecontrolbykubqoa.database.sqlite.GetChunksCreativeBlocksQuery;
 import org.bukkit.Bukkit;
 import org.bukkit.block.Block;
 import org.bukkit.scheduler.BukkitRunnable;
+
+import java.util.List;
 
 /**
  * An SQLite database implementation
@@ -53,5 +57,17 @@ public class SQLite implements DatabaseInterface {
 
     public void blockRemove(Block block) {
 
+    }
+
+    @Override
+    public List<Block> getChunksCreativeBlocks(CreativeChunk chunk) {
+        try {
+            GetChunksCreativeBlocksQuery query = new GetChunksCreativeBlocksQuery(chunk);
+            query.run();
+            //TODO: implement method
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+        return null;
     }
 }

@@ -32,6 +32,10 @@ public class Database
         }
     }
 
+    public String getTableName(String table) {
+        return this.config.getString("db.prefix") + table;
+    }
+
     public Connection getConnection() {
         try {
             return this.hikariDataSource.getConnection();

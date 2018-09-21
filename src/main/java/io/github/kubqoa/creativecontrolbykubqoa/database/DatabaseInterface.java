@@ -2,7 +2,10 @@ package io.github.kubqoa.creativecontrolbykubqoa.database;
 
 import com.zaxxer.hikari.HikariConfig;
 import io.github.kubqoa.creativecontrolbykubqoa.Config;
+import io.github.kubqoa.creativecontrolbykubqoa.creative.CreativeChunk;
 import org.bukkit.block.Block;
+
+import java.util.List;
 
 public interface DatabaseInterface {
     /**
@@ -46,4 +49,12 @@ public interface DatabaseInterface {
      * @param block the block to be removed from database
      */
     void blockRemove(Block block);
+
+    /**
+     * Get creative blocks for the given CreativeChunk
+     *
+     * @param chunk the chunk for which to get all the creative blocks
+     * @return list of all creative blocks in the given chunk
+     */
+    List<Block> getChunksCreativeBlocks(CreativeChunk chunk);
 }
