@@ -1,13 +1,17 @@
 package io.github.kubqoa.creativecontrolbykubqoa;
 
+import io.github.kubqoa.creativecontrolbykubqoa.creative.CreativeChunk;
 import io.github.kubqoa.creativecontrolbykubqoa.listeners.BlockPlace;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.HashMap;
 
 public class CreativeControlByKubqoA extends JavaPlugin {
     public static Config config;
     public static Database database;
     public static JavaPlugin javaPlugin;
+    public static HashMap<String, CreativeChunk> chunks;
 
     public CreativeControlByKubqoA() {
         javaPlugin = this;

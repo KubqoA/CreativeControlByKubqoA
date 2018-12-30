@@ -40,7 +40,7 @@ public class SQLite implements DatabaseInterface {
     }
 
     public void blockStore(Block block) {
-        Bukkit.getScheduler().runTaskAsynchronously(CreativeControlByKubqoA.javaPlugin, new BukkitRunnable() {
+        new BukkitRunnable() {
             public void run() {
                 try {
                     new BlockStoreUpdate(block).run();
@@ -48,7 +48,7 @@ public class SQLite implements DatabaseInterface {
                     e.printStackTrace();
                 }
             }
-        });
+        }.runTaskAsynchronously(CreativeControlByKubqoA.javaPlugin);
     }
 
     public boolean blockCheck(Block block) {

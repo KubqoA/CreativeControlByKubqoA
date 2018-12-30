@@ -1,33 +1,41 @@
 package io.github.kubqoa.creativecontrolbykubqoa.creative;
 
+import io.github.kubqoa.creativecontrolbykubqoa.CreativeControlByKubqoA;
 import org.bukkit.Chunk;
-import org.bukkit.block.Block;
 
 import java.util.Base64;
-import java.util.List;
 
 public class CreativeChunk {
     private Chunk chunk;
-    private List<Block> creativeBlocks;
 
     public CreativeChunk(Chunk chunk) {
         this.chunk = chunk;
+        this.loadChunkFromDatabase();
     }
 
     public static String getUniqueId(Chunk chunk) {
-        return new CreativeChunk(chunk).getUniqueId();
-    }
-
-    public String getUniqueId() {
-        String coordinates = "x" + this.chunk.getX() + "z" + this.chunk.getZ();
+        String coordinates = "x" + chunk.getX() + "z" + chunk.getZ();
         return new String(Base64.getEncoder().encode(coordinates.getBytes()));
     }
 
-    public void loadCreativeBlocks() {
+    public static CreativeChunk getLoadedChunk(Chunk chunk) {
+        return CreativeControlByKubqoA.chunks.get(getUniqueId(chunk));
+    }
+
+    public String getUniqueId() {
+        return getUniqueId(this.chunk);
+    }
+
+    private void loadChunkFromDatabase() {
 
     }
 
-    public List<Block> getCreativeBlocks() {
-        return this.creativeBlocks;
+    private void saveChunkToDatabase() {
+
+    }
+
+    public void unload() {
+        this.saveChunkToDatabase();
+        CreativeControlByKubqoA.chunks.remove(this.getUniqueId());
     }
 }
