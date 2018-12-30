@@ -16,6 +16,8 @@ public abstract class Query {
 
     /**
      * Run the query specified in query method with parameters from parameter method
+     *
+     * @throws Exception
      */
     public void run() throws Exception {
         try {
@@ -30,7 +32,7 @@ public abstract class Query {
         } catch (Exception exception) {
             throw exception();
         }
-    };
+    }
 
     public ResultSet getResultSet() {
         return this.resultSet;
@@ -47,7 +49,7 @@ public abstract class Query {
     }
 
     /**
-     * Checks whether there the resultset contains any results
+     * Checks whether there the resultSet contains any results
      *
      * @return boolean
      */
