@@ -12,14 +12,11 @@ public abstract class Query {
 
     abstract public String query();
     abstract public Object[] parameters();
-    abstract public Exception exception();
 
     /**
      * Run the query specified in query method with parameters from parameter method
-     *
-     * @throws Exception
      */
-    public void run() throws Exception {
+    public void run() {
         try {
             Connection connection = CreativeControlByKubqoA.database.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(query());
@@ -30,7 +27,7 @@ public abstract class Query {
             }
             this.resultSet = preparedStatement.executeQuery();
         } catch (Exception exception) {
-            throw exception();
+            exception.printStackTrace();
         }
     }
 

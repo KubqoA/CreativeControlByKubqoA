@@ -8,14 +8,13 @@ import java.sql.PreparedStatement;
 public abstract class Update {
     abstract public String update();
     abstract public Object[] parameters();
-    abstract public Exception exception();
 
     /**
      * Run the query
      *
-     * @return
+     * @return int
      */
-    public int run() throws Exception {
+    public int run() {
         try {
             Connection connection = CreativeControlByKubqoA.database.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(update());
@@ -26,7 +25,8 @@ public abstract class Update {
             }
             return preparedStatement.executeUpdate();
         } catch (Exception exception) {
-            throw exception();
+            exception.printStackTrace();
+            return 0;
         }
-    };
+    }
 }

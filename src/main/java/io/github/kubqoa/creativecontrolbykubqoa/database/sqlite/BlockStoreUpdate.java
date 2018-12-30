@@ -3,7 +3,6 @@ package io.github.kubqoa.creativecontrolbykubqoa.database.sqlite;
 import io.github.kubqoa.creativecontrolbykubqoa.CreativeControlByKubqoA;
 import io.github.kubqoa.creativecontrolbykubqoa.creative.CreativeChunk;
 import io.github.kubqoa.creativecontrolbykubqoa.database.Update;
-import io.github.kubqoa.creativecontrolbykubqoa.exceptions.BlockStoreException;
 import org.bukkit.block.Block;
 
 public class BlockStoreUpdate extends Update {
@@ -28,9 +27,5 @@ public class BlockStoreUpdate extends Update {
                 this.block.getZ(),
                 this.block.getWorld().getUID()
         };
-    }
-
-    public Exception exception() {
-        return new BlockStoreException();
     }
 }

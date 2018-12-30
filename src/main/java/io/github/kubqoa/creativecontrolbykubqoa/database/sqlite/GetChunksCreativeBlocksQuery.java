@@ -3,7 +3,6 @@ package io.github.kubqoa.creativecontrolbykubqoa.database.sqlite;
 import io.github.kubqoa.creativecontrolbykubqoa.CreativeControlByKubqoA;
 import io.github.kubqoa.creativecontrolbykubqoa.creative.CreativeChunk;
 import io.github.kubqoa.creativecontrolbykubqoa.database.Query;
-import io.github.kubqoa.creativecontrolbykubqoa.exceptions.GetChunksCreativeBlocksException;
 
 public class GetChunksCreativeBlocksQuery extends Query {
     private CreativeChunk chunk;
@@ -24,10 +23,5 @@ public class GetChunksCreativeBlocksQuery extends Query {
         return new Object[]{
                 chunk.getUniqueId()
         };
-    }
-
-    @Override
-    public Exception exception() {
-        return new GetChunksCreativeBlocksException(chunk);
     }
 }

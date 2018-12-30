@@ -2,7 +2,6 @@ package io.github.kubqoa.creativecontrolbykubqoa.database.sqlite;
 
 import io.github.kubqoa.creativecontrolbykubqoa.CreativeControlByKubqoA;
 import io.github.kubqoa.creativecontrolbykubqoa.database.Update;
-import io.github.kubqoa.creativecontrolbykubqoa.exceptions.TableCreateException;
 
 public class BlockTableCreateUpdate extends Update {
     @Override
@@ -24,8 +23,4 @@ public class BlockTableCreateUpdate extends Update {
         return new Object[0];
     }
 
-    @Override
-    public Exception exception() {
-        return new TableCreateException("blocks");
-    }
 }

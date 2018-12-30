@@ -34,8 +34,8 @@ public class SQLite implements DatabaseInterface {
     public void createBlocksTable() {
         try {
             new BlockTableCreateUpdate().run();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception exception) {
+            exception.printStackTrace();
         }
     }
 
