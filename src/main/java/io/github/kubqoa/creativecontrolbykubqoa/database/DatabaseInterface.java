@@ -3,7 +3,7 @@ package io.github.kubqoa.creativecontrolbykubqoa.database;
 import com.zaxxer.hikari.HikariConfig;
 import io.github.kubqoa.creativecontrolbykubqoa.Config;
 import io.github.kubqoa.creativecontrolbykubqoa.creative.CreativeChunk;
-import org.bukkit.block.Block;
+import org.bukkit.Location;
 
 import java.util.List;
 
@@ -28,27 +28,6 @@ public interface DatabaseInterface {
      */
     void createBlocksTable();
 
-    /**
-     * Stores a new creative block record in database
-     *
-     * @param block the block to be stored in database
-     */
-    void blockStore(Block block);
-
-    /**
-     * Checks whether the given block is in database
-     *
-     * @param block the block to be checked
-     * @return boolean
-     */
-    boolean blockCheck(Block block);
-
-    /**
-     * Removes the block from database
-     *
-     * @param block the block to be removed from database
-     */
-    void blockRemove(Block block);
 
     /**
      * Get creative blocks for the given CreativeChunk
@@ -56,5 +35,13 @@ public interface DatabaseInterface {
      * @param chunk the chunk for which to get all the creative blocks
      * @return list of all creative blocks in the given chunk
      */
-    List<Block> getChunksCreativeBlocks(CreativeChunk chunk);
+    List<Location> loadChunk(CreativeChunk chunk);
+
+    /**
+     * Save creative blocks for the given CreativeChunk
+     *
+     * @param chunk the chunk for which to save the changes
+     * @return
+     */
+    void saveChunk(CreativeChunk chunk);
 }

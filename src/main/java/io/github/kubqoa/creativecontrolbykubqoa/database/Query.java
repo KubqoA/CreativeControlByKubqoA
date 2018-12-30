@@ -17,9 +17,11 @@ public abstract class Query {
      * Run the query specified in query method with parameters from parameter method
      */
     public void run() {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
         try {
-            Connection connection = CreativeControlByKubqoA.database.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement(query());
+            connection = CreativeControlByKubqoA.database.getConnection();
+            preparedStatement = connection.prepareStatement(query());
             int i = 1;
             for (Object parameter : parameters()) {
                 preparedStatement.setObject(i, parameter);
@@ -28,6 +30,8 @@ public abstract class Query {
             this.resultSet = preparedStatement.executeQuery();
         } catch (Exception exception) {
             exception.printStackTrace();
+        } finally {
+            CreativeControlByKubqoA.database.close(connection,preparedStatement,null);
         }
     }
 

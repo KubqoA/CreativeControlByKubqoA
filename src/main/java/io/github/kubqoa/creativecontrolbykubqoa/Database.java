@@ -4,8 +4,11 @@ import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import io.github.kubqoa.creativecontrolbykubqoa.database.DatabaseInterface;
 import io.github.kubqoa.creativecontrolbykubqoa.exceptions.InvalidConfigurationException;
+import org.bukkit.Bukkit;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Database
@@ -43,6 +46,13 @@ public class Database
             e.printStackTrace();
             return null;
         }
+    }
+
+    public void close(Connection connection, PreparedStatement preparedStatement, ResultSet resultSet) {
+        Bukkit.getLogger().info("closing");
+        if (connection!=null) try { connection.close(); } catch (SQLException ignored) {}
+        if (preparedStatement!=null) try { preparedStatement.close(); } catch (SQLException ignored) {}
+        if (resultSet!=null) try { resultSet.close(); } catch (SQLException ignored) {}
     }
 
     public void closeDatabasePool() {

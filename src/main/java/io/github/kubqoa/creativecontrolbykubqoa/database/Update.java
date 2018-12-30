@@ -15,9 +15,11 @@ public abstract class Update {
      * @return int
      */
     public int run() {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
         try {
-            Connection connection = CreativeControlByKubqoA.database.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement(update());
+            connection = CreativeControlByKubqoA.database.getConnection();
+            preparedStatement = connection.prepareStatement(update());
             int i = 1;
             for (Object parameter : parameters()) {
                 preparedStatement.setObject(i, parameter);
@@ -27,6 +29,8 @@ public abstract class Update {
         } catch (Exception exception) {
             exception.printStackTrace();
             return 0;
+        } finally {
+            CreativeControlByKubqoA.database.close(connection,preparedStatement,null);
         }
     }
 }

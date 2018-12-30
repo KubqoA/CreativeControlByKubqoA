@@ -2,6 +2,7 @@ package io.github.kubqoa.creativecontrolbykubqoa.listeners;
 
 import io.github.kubqoa.creativecontrolbykubqoa.CreativeControlByKubqoA;
 import io.github.kubqoa.creativecontrolbykubqoa.creative.CreativeChunk;
+import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -18,6 +19,7 @@ public class Chunk implements Listener {
     @EventHandler(priority = EventPriority.MONITOR)
     public void onChunkUnload(ChunkUnloadEvent event) {
         CreativeChunk chunk = CreativeChunk.getLoadedChunk(event.getChunk());
+        if (chunk == null) return;
         chunk.unload();
     }
 }

@@ -1,6 +1,6 @@
 package io.github.kubqoa.creativecontrolbykubqoa.creative;
 
-import io.github.kubqoa.creativecontrolbykubqoa.CreativeControlByKubqoA;
+import org.bukkit.Material;
 import org.bukkit.block.Block;
 
 public class CreativeBlock {
@@ -12,5 +12,29 @@ public class CreativeBlock {
 
     public static CreativeChunk getCreativeChunk(Block block) {
         return CreativeChunk.getLoadedChunk(block.getChunk());
+    }
+
+    private CreativeChunk getCreativeChunk() {
+        return getCreativeChunk(this.block);
+    }
+
+    public boolean isCreative() {
+        return this.getCreativeChunk().hasBlock(this.block);
+    }
+
+    public void insert() {
+        this.getCreativeChunk().insertBlock(this.block);
+    }
+
+    public void update() {
+
+    }
+
+    public void remove() {
+        this.getCreativeChunk().removeBlock(this.block);
+    }
+
+    public void physicalRemove() {
+        this.block.setType(Material.AIR);
     }
 }

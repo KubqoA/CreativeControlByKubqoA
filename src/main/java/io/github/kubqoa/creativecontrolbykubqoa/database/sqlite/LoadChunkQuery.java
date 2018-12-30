@@ -4,10 +4,10 @@ import io.github.kubqoa.creativecontrolbykubqoa.CreativeControlByKubqoA;
 import io.github.kubqoa.creativecontrolbykubqoa.creative.CreativeChunk;
 import io.github.kubqoa.creativecontrolbykubqoa.database.Query;
 
-public class GetChunksCreativeBlocksQuery extends Query {
+public class LoadChunkQuery extends Query {
     private CreativeChunk chunk;
 
-    public GetChunksCreativeBlocksQuery(CreativeChunk chunk) {
+    public LoadChunkQuery(CreativeChunk chunk) {
         this.chunk = chunk;
     }
 
@@ -15,7 +15,7 @@ public class GetChunksCreativeBlocksQuery extends Query {
     public String query() {
         return "SELECT * FROM " +
                 CreativeControlByKubqoA.database.getTableName("blocks") +
-                "WHERE chunk=?";
+                " WHERE chunk=?";
     }
 
     @Override
